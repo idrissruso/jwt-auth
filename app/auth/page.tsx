@@ -56,7 +56,15 @@ export function AuthenticationForm(props: PaperProps) {
 
       <Divider label="Or continue with email" labelPosition="center" my="lg" />
 
-      <form onSubmit={form.onSubmit(() => {})}>
+      <form
+        onSubmit={form.onSubmit(() => {
+          if (type === 'register') {
+            const { name, email, password, terms } = form.values
+          } else {
+            const { email, password } = form.values
+          }
+        })}
+      >
         <Stack>
           {type === 'register' && (
             <TextInput
